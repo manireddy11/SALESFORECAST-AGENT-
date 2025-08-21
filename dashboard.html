@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Prediction Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .result.success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .result.error {
+            background: linear-gradient(135deg, #f44336, #da190b);
+            color: white;
+        }
+
+        .result.info {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .probability-bar {
+            width: 100%;
+            height: 20px;
+            background: #e1e5e9;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .probability-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 ML Prediction Dashboard</h1>
+            <p>Revenue Forecasting & Lead Conversion Predictions</p>
+        </div>
+
+        <div class="dashboard">
+            <!-- Revenue Forecast Card -->
+            <div class="card">
+                <h2>📈 Revenue Forecast</h2>
+                <div class="form-group">
+                    <label for="forecast-date">Select Future Date:</label>
+                    <input type="date" id="forecast-date" required>
+                </div>
+                
+                <button class="btn" onclick="getForecast()">
+                    <span id="forecast-loading" class="loading hidden"></span>
+                    Get Revenue Forecast
+                </button>
+                
+                <div id="forecast-result" class="result hidden"></div>
+            </div>
+
+            <!-- Lead Conversion Card -->
+            <div class="card">
+                <h2>🎯 Lead Conversion Prediction</h2>
+                
+                <!-- Basic Information -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="promo-flag">Promo Flag:</label>
+                        <select id="promo-flag">
+                            <option value="0">No</option>
+                            <option value="1" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="marketing-spend">Marketing Spend ($):</label>
+                        <input type="number" id="marketing-spend" value="5000.50" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="num-reps">Active Reps:</label>
+                        <input type="number" id="num-reps" value="10" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="call-count">Call Count:</label>
+                        <input type="number" id="call-count" value="25" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting-scheduled">Meeting Scheduled:</label>
+                        <select id="meeting-scheduled">
+                            <option value="0">No</option>
+                            <option value="1" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-input">Date:</label>
+                        <input type="date" id="date-input" required>
+                    </div>
+                </div>
+
+                <!-- Categorical Features -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sales-channel">Sales Channel:</label>
+                        <select id="sales-channel">
+                            <option value="offline">Offline</option>
+                            <option value="online" selected>Online</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lead-source">Lead Source:</label>
+                        <select id="lead-source">
+                            <option value="other">Other</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="referral">Referral</option>
+                            <option value="web" selected>Web</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-role">Job Role:</label>
+                        <select id="job-role">
+                            <option value="other">Other</option>
+                            <option value="director">Director</option>
+                            <option value="intern">Intern</option>
+                            <option value="manager" selected>Manager</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="industry">Industry:</label>
+                        <select id="industry">
+                            <option value="other">Other</option>
+                            <option value="finance">Finance</option>
+                            <option value="retail">Retail</option>
+                            <option value="tech" selected>Tech</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="region">Region:</label>
+                        <select id="region">
+                            <option value="other">Other</option>
+                            <option value="north">North</option>
+                            <option value="south" selected>South</option>
+                            <option value="west">West</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-interest">Product Interest:</label>
+                        <select id="product-interest">
+                            <option value="a">Product A</option>
+                            <option value="b">Product B</option>
+                            <option value="c" selected>Product C</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="predictLead()">
+                    <span id="lead-loading" class="loading hidden"></span>
+                    Predict Conversion
+                </button>
+                
+                <div id="lead-result" class="result hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set default date to today
+        document.getElementById('date-input').valueAsDate = new Date();
+        document.getElementById('forecast-date').valueAsDate = new Date(Date.now() + 30*24*60*60*1000); // 30 days from now
+
+        // API Base URL - Update this to your FastAPI server URL
+        const API_BASE_URL = 'http://localhost:8000';
+
+        async function getForecast() {
+            const dateInput = document.getElementById('forecast-date').value;
+            const resultDiv = document.getElementById('forecast-result');
+            const loadingSpan = document.getElementById('forecast-loading');
+
+            if (!dateInput) {
+                showResult('forecast-result', 'Please select a date', 'error');
+                return;
+            }
+
+            // Convert date format from YYYY-MM-DD to DD-MM-YYYY
+            const [year, month, day] = dateInput.split('-');
+            const formattedDate = `${day}-${month}-${year}`;
+
+            loadingSpan.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/forecast/${formattedDate}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const revenue = parseFloat(data.cumulative_revenue_forecast);
+                    const formattedRevenue = new Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD',
+                        minimumFractionDigits: 2
+                    }).format(revenue);
+
+                    showResult('forecast-result', 
+                        `📊 Cumulative Revenue Forecast: <br><strong>${formattedRevenue}</strong><br>for ${data.date}`, 
+                        'success');
+                } else {
+                    showResult('forecast-result', `❌ ${data.detail || 'Forecast failed'}`, 'error');
+                }
+            } catch (error) {
+                showResult('forecast-result', `❌ Connection error: ${error.message}`, 'error');
+            } finally {
+                loadingSpan.classList.add('hidden');
+            }
+        }
+
+        async function predictLead() {
+            const resultDiv = document.getElementById('lead-result');
+            const loadingSpan = document.getElementById('lead-loading');
+
+            loadingSpan.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+
+            try {
+                const leadData = buildLeadData();
+                
+                const response = await fetch(`${API_BASE_URL}/lead_conversion/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(leadData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    displayLeadResult(data);
+                } else {
+                    showResult('lead-result', `❌ ${data.detail || 'Prediction failed'}`, 'error');
+                }
+            } catch (error) {
+                showResult('lead-result', `❌ Connection error: ${error.message}`, 'error');
+            } finally {
+                loadingSpan.classList.add('hidden');
+            }
+        }
+
+        function buildLeadData() {
+            const dateValue = document.getElementById('date-input').value;
+            const date = new Date(dateValue);
+
+            // Determine seasonality based on month
+            const month = date.getMonth() + 1;
+            let seasonality = { Q2: 0, Q3: 0, Q4: 0 };
+            if (month >= 4 && month <= 6) seasonality.Q2 = 1;
+            else if (month >= 7 && month <= 9) seasonality.Q3 = 1;
+            else if (month >= 10 && month <= 12) seasonality.Q4 = 1;
+
+            return {
+                Promo_Flag: parseInt(document.getElementById('promo-flag').value),
+                Marketing_Spend: parseFloat(document.getElementById('marketing-spend').value),
+                Num_Reps_Active: parseInt(document.getElementById('num-reps').value),
+                Call_Count: parseInt(document.getElementById('call-count').value),
+                Meeting_Scheduled: parseInt(document.getElementById('meeting-scheduled').value),
+                year: date.getFullYear(),
+                month: month,
+                day: date.getDate(),
+                Sales_Channel_Online: document.getElementById('sales-channel').value === 'online' ? 1 : 0,
+                Seasonality_Q2: seasonality.Q2,
+                Seasonality_Q3: seasonality.Q3,
+                Seasonality_Q4: seasonality.Q4,
+                Lead_Source_LinkedIn: document.getElementById('lead-source').value === 'linkedin' ? 1 : 0,
+                Lead_Source_Referral: document.getElementById('lead-source').value === 'referral' ? 1 : 0,
+                Lead_Source_Web: document.getElementById('lead-source').value === 'web' ? 1 : 0,
+                Job_Role_Director: document.getElementById('job-role').value === 'director' ? 1 : 0,
+                Job_Role_Intern: document.getElementById('job-role').value === 'intern' ? 1 : 0,
+                Job_Role_Manager: document.getElementById('job-role').value === 'manager' ? 1 : 0,
+                Industry_Finance: document.getElementById('industry').value === 'finance' ? 1 : 0,
+                Industry_Retail: document.getElementById('industry').value === 'retail' ? 1 : 0,
+                Industry_Tech: document.getElementById('industry').value === 'tech' ? 1 : 0,
+                Region_North: document.getElementById('region').value === 'north' ? 1 : 0,
+                Region_South: document.getElementById('region').value === 'south' ? 1 : 0,
+                Region_West: document.getElementById('region').value === 'west' ? 1 : 0,
+                Product_Interest_B: document.getElementById('product-interest').value === 'b' ? 1 : 0,
+                Product_Interest_C: document.getElementById('product-interest').value === 'c' ? 1 : 0
+            };
+        }
+
+        function displayLeadResult(data) {
+            const probability = (data.conversion_probability * 100).toFixed(1);
+            const willConvert = data.likely_to_convert;
+            
+            const resultHTML = `
+                <div style="text-align: left;">
+                    <h3 style="margin-bottom: 10px;">${willConvert ? '✅' : '❌'} Conversion ${willConvert ? 'Likely' : 'Unlikely'}</h3>
+                    <div class="probability-bar">
+                        <div class="probability-fill" style="width: ${probability}%"></div>
+                    </div>
+                    <p><strong>Probability: ${probability}%</strong></p>
+                    <div class="stats-grid" style="margin-top: 15px;">
+                        <div class="stat-card">
+                            <div class="stat-value">${probability}%</div>
+                            <div class="stat-label">Conversion Rate</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">${willConvert ? 'HIGH' : 'LOW'}</div>
+                            <div class="stat-label">Confidence</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            showResult('lead-result', resultHTML, 'success');
+        }
+
+        function showResult(elementId, message, type) {
+            const resultDiv = document.getElementById(elementId);
+            resultDiv.innerHTML = message;
+            resultDiv.className = `result ${type}`;
+            resultDiv.classList.remove('hidden');
+        }
+
+        // Add some UI enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

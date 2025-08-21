@@ -1,0 +1,45 @@
+###############################################################
+# Core web stack (FastAPI + ASGI server + LangServe wrapper)  #
+###############################################################
+
+
+langserve[server]==0.3.1          # adds LangServe routing & docs
+
+###############################################################
+# LangChain runtime and Ollama integration                    #
+###############################################################
+langchain-core>=0.3,<0.4
+langchain-community>=0.3,<0.4
+langchain-ollama>=0.3.6          # ChatOllama / OllamaEmbeddings
+ollama>=0.4.2                    # official Python client (optional)
+
+###############################################################
+# Forecasting & ML models                                     #
+###############################################################
+prophet==1.1.7                   # Meta Prophet time-series model
+xgboost==3.0.2                   # CPU build; GPU available separately
+scikit-learn==1.4.2              # shared interfaces w/ XGBoost
+joblib==1.4.2                    # serialization for sklearn / XGB
+fastapi==0.104.1
+uvicorn==0.24.0
+xgboost==2.0.3
+pandas==2.1.4
+scikit-learn==1.3.2
+joblib==1.3.2
+prophet==1.1.5
+pydantic==2.5.2
+numpy==1.24.4
+
+###############################################################
+# Data utilities & helpers                                    #
+###############################################################
+pandas==2.2.2
+python-dotenv==1.0.1             # load .env secrets in Docker
+
+# Prophet’s transitive deps are pulled automatically:
+#   holidays, convertdate, lunarcalendar, cmdstanpy, etc.
+
+###############################################################
+# Optional – local dev demos                                  #
+###############################################################
+streamlit==1.34.0                # keep if you still run the old UI
