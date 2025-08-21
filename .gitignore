@@ -1,0 +1,14 @@
+# Python virtual environment
+Lib/
+Scripts/
+share/
+Include/
+pyvenv.cfg
+
+# Bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Packages
+*.egg-info/
