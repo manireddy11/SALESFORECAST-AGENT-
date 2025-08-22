@@ -4,9 +4,6 @@
 
 
 
-<p align="center">
-  <img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="250"/>
-</p>
 
 
 
@@ -47,7 +44,10 @@ Both models are saved locally and invoked through LangChain tool functions, ensu
 ![App screenshot](https://raw.githubusercontent.com/manireddy11/SALESFORECAST-AGENT-/c0ae939445cf3d45669dd281b75e7664a35434bf/Screenshot%202025-08-21%20145731.png)
 
 
-🚧 Challenges Faced
+<p align="center">
+  <img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="220"/>
+</p>
+
 
 Choosing the Right LLM
 
