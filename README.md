@@ -4,13 +4,16 @@
 
 
 
+<p align="center">
+  <img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="400"/>
+</p>
 
 
 
 ![Screenshot](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/02919c5becf839e2323855b11098d12bb3fc5c65/Screenshot%202025-08-21%20211250.png?raw=true)
 
 
- Sales Forecasting AI Agent
+ Sales/Revenue  Forecasting & Lead Conversion prediction AI Agent :
 
 An AI-powered Sales Forecasting & Lead Conversion Agent that predicts future revenue pipelines and lead conversion probabilities by calling backend machine learning models trained on the business data of X Company.
 
@@ -109,7 +112,6 @@ Uvicorn
  – ASGI server
 
 
-🧪 API Testing with Postman
 
 
 <p align="center">
