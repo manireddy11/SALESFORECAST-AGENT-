@@ -16,7 +16,7 @@ An AI-powered Sales Forecasting & Lead Conversion Agent that predicts future rev
 
 This project combines the power of LangChain, Mistral LLM, and custom ML models (XGBoost & Prophet) to deliver actionable insights for business growth.
 
-<img src="https://img.shields.io/badge/PROJECT%20DESCRIPTION-FFD700?style=for-the-badge&logoColor=white&labelColor=FFD700&color=FFD700" width="250"/>
+<img src="https://img.shields.io/badge/PROJECT%20DESCRIPTION-FFD700?style=for-the-badge&logoColor=white&labelColor=FFD700&color=FFD700" width="200"/>
 
 
 This project is built around the idea of predictive sales intelligence, combining the power of machine learning models with the flexibility of large language models. At its core, it brings together two specialized predictors: an XGBoost model (muxgb_lead_model.json) that estimates the likelihood of lead conversion, and a Facebook Prophet model (Revenue_ML_model.pkl) that forecasts future revenue trends. Both models are stored locally and accessed through carefully designed LangChain tool functions, which act as the middleware. This setup ensures that even though advanced LLMs like Mistral cannot directly run ML models, they can still query these tools seamlessly and provide accurate, domain-specific predictions to the user. In essence, LangChain serves as the bridge between conversational intelligence and data-driven forecasting, creating a smooth pipeline where natural language queries translate into actionable business insights.
@@ -36,9 +36,7 @@ This project is built around the idea of predictive sales intelligence, combinin
 ![App screenshot](https://raw.githubusercontent.com/manireddy11/SALESFORECAST-AGENT-/c0ae939445cf3d45669dd281b75e7664a35434bf/Screenshot%202025-08-21%20145731.png)
 
 
-<p align="center">
-  <img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="220"/>
-</p>
+<img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="220"/>
 
 
 Choosing the Right LLM
@@ -156,12 +154,8 @@ The ML models are schema-sensitive. If input columns don’t match exactly, pred
 To solve this, the Streamlit interface enforces correct input formats, and Postman testing validates the endpoints independently.
 
 
+<img src="https://img.shields.io/badge/Getting%20Started%20QUICK%20GUIDE-F5F5F5,CCCCCC?style=for-the-badge&logoColor=black&color=F5F5F5" width="190"/>
 
-
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Getting%20Started%20QUICK%20GUIDE-F5F5F5,CCCCCC?style=for-the-badge&logoColor=black&color=F5F5F5" width="190"/>
-</p>
 
 🔧 Installation
 git clone https://github.com/your-username/sales-forecasting-agent.git
