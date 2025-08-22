@@ -102,7 +102,6 @@ FastAPI
 Uvicorn
  – ASGI server
 
-[IMAGE ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::]
 
 🧪 API Testing with Postman
 
@@ -120,8 +119,7 @@ Output: Cumulative revenue forecast from the model’s training cutoff date up t
   "date": "15-09-2027"
 }
 
-
-[IMAGE1/POSTMAN:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::]
+![Screenshot 1](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/7dff296c83cfb5e7912c8559c51f822102a16879/Screenshot%20(58).png?raw=true)
 
  🔹 XGBoost Model (Lead Conversion Prediction)
 
@@ -143,8 +141,10 @@ Expected Input Columns:
 
 
 Output: Probability of lead conversion (between 0 and 1).
-[IMAGE 2 /POSTMAN :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::]
+![Screenshot 2](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/7dff296c83cfb5e7912c8559c51f822102a16879/Screenshot%20(57).png?raw=true)
+
 👉 Why this matters:
+
 
 The ML models are schema-sensitive. If input columns don’t match exactly, predictions will fail.
 
