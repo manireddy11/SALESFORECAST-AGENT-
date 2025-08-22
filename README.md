@@ -17,7 +17,7 @@ An AI-powered Sales Forecasting & Lead Conversion Agent that predicts future rev
 This project combines the power of LangChain, Mistral LLM, and custom ML models (XGBoost & Prophet) to deliver actionable insights for business growth.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/🚧%20PROJECT%20DESCRIPTION-000000?style=for-the-badge&logoColor=white&labelColor=000000&color=000000" width="190"/>
+  <img src="https://img.shields.io/badge/%20PROJECT%20DESCRIPTION-000000?style=for-the-badge&logoColor=white&labelColor=000000&color=000000" width="190"/>
 </p>
 
 
