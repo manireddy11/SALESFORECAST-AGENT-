@@ -78,7 +78,7 @@ Solution: enforced strict column validation in Streamlit UI to match model expec
 
 🔄 Migrated from LLaMA to Mistral, eliminating dependency issues.
 
-🎯 Leveraged domain-specific models for business-focused AI agent development.
+ Leveraged domain-specific models for business-focused AI agent development.
 
 🛠️ Tech Stack
 
@@ -167,8 +167,10 @@ To solve this, the Streamlit interface enforces correct input formats, and Postm
 
 
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Getting%20Started%20QUICK%20GUIDE-F5F5F5,CCCCCC?style=for-the-badge&logoColor=black&color=F5F5F5" width="190"/>
+</p>
 
-🚀 Getting Started QUICK GUIDE 
 🔧 Installation
 git clone https://github.com/your-username/sales-forecasting-agent.git
 cd sales-forecasting-agent
