@@ -187,6 +187,9 @@ Run Streamlit frontend
 streamlit run app.py
 
 📌 Example Workflow
+<p align="center">
+  <img src="https://img.shields.io/badge/📌%20Example%20Workflow-FFF9C4,FFE082?style=for-the-badge&logoColor=black&color=FFF9C4" width="400"/>
+</p>
 
 Enter future date → get cumulative sales forecast
 
