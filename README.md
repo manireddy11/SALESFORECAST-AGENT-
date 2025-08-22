@@ -16,9 +16,7 @@ An AI-powered Sales Forecasting & Lead Conversion Agent that predicts future rev
 
 This project combines the power of LangChain, Mistral LLM, and custom ML models (XGBoost & Prophet) to deliver actionable insights for business growth.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/%20PROJECT%20DESCRIPTION-000000?style=for-the-badge&logoColor=white&labelColor=000000&color=000000" width="190"/>
-</p>
+<img src="https://img.shields.io/badge/PROJECT%20DESCRIPTION-FFD700?style=for-the-badge&logoColor=white&labelColor=FFD700&color=FFD700" width="250"/>
 
 
 This project is built around the idea of predictive sales intelligence, combining the power of machine learning models with the flexibility of large language models. At its core, it brings together two specialized predictors: an XGBoost model (muxgb_lead_model.json) that estimates the likelihood of lead conversion, and a Facebook Prophet model (Revenue_ML_model.pkl) that forecasts future revenue trends. Both models are stored locally and accessed through carefully designed LangChain tool functions, which act as the middleware. This setup ensures that even though advanced LLMs like Mistral cannot directly run ML models, they can still query these tools seamlessly and provide accurate, domain-specific predictions to the user. In essence, LangChain serves as the bridge between conversational intelligence and data-driven forecasting, creating a smooth pipeline where natural language queries translate into actionable business insights.
