@@ -1,6 +1,7 @@
 # SALESFORECAST-AGENT-
 ![Revenue Agent](https://img.shields.io/badge/REVENUE%20AGENT-5E836F?style=for-the-badge&logoColor=white&labelColor=5E836F&color=5E836F)
 
+![SALES Agent](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/main/assets/banner.png?raw=true)
 
 
 
