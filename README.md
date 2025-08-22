@@ -28,7 +28,7 @@ Both models are saved locally and invoked through LangChain tool functions, ensu
 ![Screenshot 1](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/b790b308c3c16b18ec98511da88943fd16b54cea/Screenshot%202025-08-21%20211346.png?raw=true)
 
 📊 Lead Conversion Probability: Estimate the likelihood of lead conversion based on historical data.
-
+![Screenshot 2](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/b790b308c3c16b18ec98511da88943fd16b54cea/Screenshot%202025-08-21%20211452.png?raw=true)
 🔗 LangChain Tool Integration: Calls ML models via tool functions rather than relying solely on the LLM.
 
 🖥️ Streamlit Interface: User-friendly frontend that ensures model input columns align with trained model expectations.
@@ -59,10 +59,11 @@ ML models expect specific input columns.
 Without exact alignment, predictions fail.
 
 Solution: enforced strict column validation in Streamlit UI to match model expectations.
+![Screenshot 3](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/b790b308c3c16b18ec98511da88943fd16b54cea/Screenshot%202025-08-21%20211517.png?raw=true)
 
 ✅ How I Overcame These Challenges
 
-🚀 Used LangChain tool functions to bypass direct LLM-ML integration.
+ Used LangChain tool functions to bypass direct LLM-ML integration.
 
 ⚡ Enforced column validation in the frontend to ensure smooth predictions.
 
