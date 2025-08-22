@@ -146,7 +146,7 @@ Expected Input Columns:
 Output: Probability of lead conversion (between 0 and 1).
 ![Screenshot 2](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/7dff296c83cfb5e7912c8559c51f822102a16879/Screenshot%20(57).png?raw=true)
 
-👉 Why this matters:
+Why this matters:
 
 
 The ML models are schema-sensitive. If input columns don’t match exactly, predictions will fail.
@@ -157,7 +157,8 @@ To solve this, the Streamlit interface enforces correct input formats, and Postm
 <img src="https://img.shields.io/badge/Getting%20Started%20QUICK%20GUIDE-F5F5F5,CCCCCC?style=for-the-badge&logoColor=black&color=F5F5F5" width="190"/>
 
 
-🔧 Installation
+<img src="https://img.shields.io/badge/🔧%20Installation-87CEEB?style=for-the-badge&logoColor=white&labelColor=87CEEB&color=87CEEB" width="190"/>
+
 git clone https://github.com/your-username/sales-forecasting-agent.git
 cd sales-forecasting-agent
 pip install -r requirements.txt
