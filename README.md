@@ -1,4 +1,7 @@
 # SALESFORECAST-AGENT-
+<div style="background: rgba(94,131,111,0.7); padding:12px 20px; border-radius:12px; color:#0D1411; font-weight:700;">
+  REVENUE AGENT
+</div>
 
 
 ![Screenshot](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/02919c5becf839e2323855b11098d12bb3fc5c65/Screenshot%202025-08-21%20211250.png?raw=true)
