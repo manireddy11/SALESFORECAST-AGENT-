@@ -4,13 +4,13 @@
 ![Screenshot](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/02919c5becf839e2323855b11098d12bb3fc5c65/Screenshot%202025-08-21%20211250.png?raw=true)
 
 
-🚀 Sales Forecasting AI Agent
+ Sales Forecasting AI Agent
 
 An AI-powered Sales Forecasting & Lead Conversion Agent that predicts future revenue pipelines and lead conversion probabilities by calling backend machine learning models trained on the business data of X Company.
 
 This project combines the power of LangChain, Mistral LLM, and custom ML models (XGBoost & Prophet) to deliver actionable insights for business growth.
 
-📌 Project Description
+ Project Description
 
 This project focuses on predictive sales intelligence by integrating:
 
@@ -20,11 +20,12 @@ This project focuses on predictive sales intelligence by integrating:
 
 Both models are saved locally and invoked through LangChain tool functions, ensuring predictions are returned seamlessly even though large language models like Mistral cannot directly integrate with ML models.
 
-👉 LangChain acts as the bridge, enabling LLMs to communicate with ML models and return domain-specific predictions.
+ LangChain acts as the bridge, enabling LLMs to communicate with ML models and return domain-specific predictions.
 
 ⚡ Features
 
 🔮 Sales Revenue Forecasting: Predict cumulative sales pipeline revenue up to any given future date.
+![Screenshot 1](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/b790b308c3c16b18ec98511da88943fd16b54cea/Screenshot%202025-08-21%20211346.png?raw=true)
 
 📊 Lead Conversion Probability: Estimate the likelihood of lead conversion based on historical data.
 
