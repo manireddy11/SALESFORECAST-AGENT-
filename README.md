@@ -1,6 +1,7 @@
 # SALESFORECAST-AGENT-
 
 
+![Screenshot](https://github.com/manireddy11/SALESFORECAST-AGENT-/blob/02919c5becf839e2323855b11098d12bb3fc5c65/Screenshot%202025-08-21%20211250.png?raw=true)
 
 
 🚀 Sales Forecasting AI Agent
