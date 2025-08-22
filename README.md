@@ -5,7 +5,7 @@
 
 
 <p align="center">
-  <img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="400"/>
+  <img src="https://img.shields.io/badge/🚧%20Challenges%20Faced-FF6F6F,FF3B3B?style=for-the-badge&logoColor=white&color=FF6F6F" width="250"/>
 </p>
 
 
