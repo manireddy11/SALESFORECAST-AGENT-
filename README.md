@@ -16,18 +16,12 @@ An AI-powered Sales Forecasting & Lead Conversion Agent that predicts future rev
 
 This project combines the power of LangChain, Mistral LLM, and custom ML models (XGBoost & Prophet) to deliver actionable insights for business growth.
 
- Project Description
+<p align="center">
+  <img src="https://img.shields.io/badge/🚧%20PROJECT%20DESCRIPTION-000000?style=for-the-badge&logoColor=white&labelColor=000000&color=000000" width="190"/>
+</p>
 
-This project focuses on predictive sales intelligence by integrating:
 
-✅ Lead Conversion Prediction using an XGBoost model (muxgb_lead_model.json)
-
-✅ Revenue Forecasting using a Facebook Prophet model (Revenue_ML_model.pkl)
-
-Both models are saved locally and invoked through LangChain tool functions, ensuring predictions are returned seamlessly even though large language models like Mistral cannot directly integrate with ML models.
-
- LangChain acts as the bridge, enabling LLMs to communicate with ML models and return domain-specific predictions.
-
+This project is built around the idea of predictive sales intelligence, combining the power of machine learning models with the flexibility of large language models. At its core, it brings together two specialized predictors: an XGBoost model (muxgb_lead_model.json) that estimates the likelihood of lead conversion, and a Facebook Prophet model (Revenue_ML_model.pkl) that forecasts future revenue trends. Both models are stored locally and accessed through carefully designed LangChain tool functions, which act as the middleware. This setup ensures that even though advanced LLMs like Mistral cannot directly run ML models, they can still query these tools seamlessly and provide accurate, domain-specific predictions to the user. In essence, LangChain serves as the bridge between conversational intelligence and data-driven forecasting, creating a smooth pipeline where natural language queries translate into actionable business insights.
 ⚡ Features
 
 🔮 Sales Revenue Forecasting: Predict cumulative sales pipeline revenue up to any given future date.
